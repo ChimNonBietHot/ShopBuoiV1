@@ -23,6 +23,7 @@ namespace ShopBuoi.Web.API
 
         }
         [Route("getall")]
+
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>

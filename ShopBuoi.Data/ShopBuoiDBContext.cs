@@ -1,9 +1,10 @@
-﻿using ShopBuoi.Model.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using ShopBuoi.Model.Models;
 using System.Data.Entity;
 
 namespace ShopBuoi.Data
 {
-    public class ShopBuoiDBContext : DbContext
+    public class ShopBuoiDBContext : IdentityDbContext<ApplicationUser>
     {
         public ShopBuoiDBContext() : base("ShopBuoi")
         {
@@ -30,6 +31,11 @@ namespace ShopBuoi.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+
+        public static ShopBuoiDBContext Create()
+        {
+            return new ShopBuoiDBContext();
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
